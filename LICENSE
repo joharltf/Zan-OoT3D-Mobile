@@ -1,0 +1,28 @@
+PROPRIETARY LICENSE — PREBUILT APPLICATION ONLY
+
+Copyright (c) 2026 joharltf. All rights reserved.
+
+This repository distributes only prebuilt Android application binaries for
+private testing. No source code, build scripts, keys or game data are included.
+
+Permission is granted to the recipient to:
+  1. download and install the APK on devices they own or are authorized to test;
+  2. use the APK for private, non-commercial evaluation and bug reporting.
+
+No permission is granted to:
+  1. copy, modify, adapt, translate, decompile, disassemble or reverse engineer
+     the APK or any part of it;
+  2. rebuild, re-sign, repackage or produce derivatives of the application;
+  3. redistribute, sublicense, sell, publish or otherwise make the APK available
+     to third parties;
+  4. extract, bundle or distribute ROM images, decrypted game data, extracted
+     assets, save files or save states.
+
+The recipient must supply their own legally obtained decrypted game image
+locally. No ROM or game data is bundled with the APK.
+
+Embedded third-party components remain subject to their own license terms.
+See THIRD_PARTY_NOTICES.md in the source repository Port-Native/zeldaoot3d.
+
+THE APK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. THE AUTHOR IS NOT
+LIABLE FOR ANY DAMAGES ARISING FROM ITS USE.
