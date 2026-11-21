@@ -9,6 +9,11 @@ and cannot be used to rebuild the APK.
 See [LICENSE](LICENSE) before downloading. Redistribution, reverse engineering
 and rebuilding are not permitted.
 
+## Credits
+
+This build is based on the **TriAevum** engine and Forge runtime. Credit and
+thanks go to the TriAevum project and its contributors.
+
 ## Current prerelease
 
 `v0.1.0-rc1` — see the [Releases](../../releases) page for the APK.
