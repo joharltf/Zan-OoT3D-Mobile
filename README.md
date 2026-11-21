@@ -26,7 +26,7 @@ thanks go to the TriAevum project and its contributors.
 | Renderer | Native Vulkan path with NRI where supported |
 | Verified device | Xiaomi `surya`, Snapdragon 732G / Adreno 618, Android 12, Vulkan 1.1 |
 | Not yet device-verified | Helio G85/G99, Mali-G52/G57 class |
-| APK SHA-256 | `732acc9b1d72a764f3386a7fb4001bef0b271bea27d2b512e78bb3327dbaf01d` |
+| APK SHA-256 | `5872c80c532dd7665e43ea545776a27450d1f28b4b6af7ce1131c9626f4d072b` |
 
 This is a **prerelease**. Stable `v0.1.0` will be published after more device
 qualification, especially on Mali.
