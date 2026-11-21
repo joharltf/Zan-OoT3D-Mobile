@@ -20,13 +20,13 @@ thanks go to the TriAevum project and its contributors.
 
 | Item | Value |
 | --- | --- |
-| Package | `org.triaevum.echoesoftime` |
+| Package | `org.zan.ocarinaoftime` |
 | ABI | `arm64-v8a` |
 | Minimum Android | 10 (API 29) |
 | Renderer | Native Vulkan path with NRI where supported |
 | Verified device | Xiaomi `surya`, Snapdragon 732G / Adreno 618, Android 12, Vulkan 1.1 |
 | Not yet device-verified | Helio G85/G99, Mali-G52/G57 class |
-| APK SHA-256 | `b497fdbb9ae076077b3f106b4014bb843f100c7efed2a9fb73613b81872de8c1` |
+| APK SHA-256 | `732acc9b1d72a764f3386a7fb4001bef0b271bea27d2b512e78bb3327dbaf01d` |
 
 This is a **prerelease**. Stable `v0.1.0` will be published after more device
 qualification, especially on Mali.
@@ -45,7 +45,7 @@ If a glitch or crash happens, attach this one automatically written file from
 Discord; no menu action is needed:
 
 ```text
-Android/data/org.triaevum.echoesoftime/files/data/logs/Zan-bug-report.txt
+Android/data/org.zan.ocarinaoftime/files/data/logs/Zan-bug-report.txt
 ```
 
 It is redacted: user paths, title folders and hashes are removed. Do not attach
