@@ -36,8 +36,8 @@ qualification, especially on Mali.
 1. Download `Zan-OoT3D-Mobile-arm64.apk` from Releases.
 2. Allow installation from the file manager/browser on Android.
 3. Install the APK. No ROM or game data is bundled.
-4. Use the in-app Forge to select your own locally stored decrypted
-   `.3ds`/`.cci`. Nothing is uploaded.
+4.Use the in-app Forge to select your own locally stored decryptedUse the in-app Forge to select your own locally stored decrypted Put the decrypt rom file in sdcard/OOT3D
+5. Play and wait for the build to run, and you can play it
 
 ## Bug reports
 
