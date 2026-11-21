@@ -9,6 +9,8 @@ black. The change is staged until **RESTART GAME / RESTART SEKARANG** is pressed
 
 - Everything from v0.1.0-rc1.
 - Frame skip toggle in the in-game Video tab, ZAN Tuner and F1 graphics panel.
+- Clear letterbox bars in the NRI scanout path so scene/room fades no longer
+  flicker a stale portrait image around the picture.
 - Package/Docs internals use `org.zan.ocarinaoftime`.
 - TriAevum engine and Forge runtime credit in README.
 
@@ -23,5 +25,5 @@ black. The change is staged until **RESTART GAME / RESTART SEKARANG** is pressed
 
 ```text
 Zan-OoT3D-Mobile-arm64.apk
-SHA-256: 732acc9b1d72a764f3386a7fb4001bef0b271bea27d2b512e78bb3327dbaf01d
+SHA-256: 5872c80c532dd7665e43ea545776a27450d1f28b4b6af7ce1131c9626f4d072b
 ```
