@@ -16,7 +16,7 @@ thanks go to the TriAevum project and its contributors.
 
 ## Current prerelease
 
-`v0.1.0-rc1` — see the [Releases](../../releases) page for the APK.
+`v0.1.0-rc2` — see the [release](../../releases/tag/v0.1.0-rc2) or [release notes](RELEASE_NOTES_RC2.md).
 
 | Item | Value |
 | --- | --- |
