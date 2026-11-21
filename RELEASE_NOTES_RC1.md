@@ -5,6 +5,7 @@ First public prerelease of **Zan — Ocarina of Time 3D — Mobile**.
 - Native Vulkan renderer for Android 10+ `arm64-v8a`.
 - Game-styled ImGui Performance/Graphics panel, F1 swipe scrolling and grip move.
 - FPS/CPU/GPU HUD; GPU uses a two-query whole-frame Vulkan timestamp.
+- Frame skip ON/OFF toggle in the Video, ZAN Tuner and F1 graphics panels.
 - `Pilih backend renderer` preference (backend for next launch; no `.so`/ICD import).
 - Automatic single-file redacted bug log: `Zan-bug-report.txt`.
 - Vendor/driver detection for ARM Mali and Qualcomm Adreno in diagnostics.
@@ -31,5 +32,5 @@ decrypted game image locally through the in-app Forge. See the repository
 
 ```text
 Zan-OoT3D-Mobile-arm64.apk
-SHA-256: b497fdbb9ae076077b3f106b4014bb843f100c7efed2a9fb73613b81872de8c1
+SHA-256: 732acc9b1d72a764f3386a7fb4001bef0b271bea27d2b512e78bb3327dbaf01d
 ```
