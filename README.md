@@ -1,6 +1,6 @@
 # Zan — Ocarina of Time 3D — Mobile
 
-![Zan — Ocarina of Time 3D — Mobile social preview]()
+![Zan — Ocarina of Time 3D — Mobile social preview](docs/images/zan-mobile-social-preview.png)
 
 Private release repository for the prebuilt Android application. This repo
 contains **only** release artifacts and documentation. It is not a source repo
