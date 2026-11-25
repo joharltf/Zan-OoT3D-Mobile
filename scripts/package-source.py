@@ -37,10 +37,16 @@ SENSITIVE = re.compile(
 )
 SENSITIVE_NAME = re.compile(
     r"(?:^|/)(?:secrets?|credentials?|tokens?|keystores?|signing)(?:/|$)"
-    r"|(?:^|[/_.-])(?:rom|roms|dump|dumped|decrypted|saves?)(?:[/_.-]|$)"
     r"|\.(?:jks|p12|pem|key|keystore)$",
     re.I,
 )
+
+# Only actual game-data containers are excluded. Source files whose names
+# mention ROMs or saves (for example the forge-rom crate) are part of the GPL
+# corresponding source and must be included.
+GAME_DATA_SUFFIX = {
+    ".rom", ".cia", ".3ds", ".ncsd", ".ncch", ".sav", ".srm", ".state",
+}
 BINARY_SUFFIX = {
     ".apk", ".so", ".a", ".o", ".dll", ".exe", ".dylib", ".appimage",
     ".zip", ".tar", ".gz", ".xz", ".7z", ".rar", ".jar", ".class",
@@ -80,8 +86,9 @@ def collect(source):
         if SENSITIVE.search(text) or SENSITIVE_NAME.search(text):
             rejected.append((text, "sensitive-looking path"))
             continue
-        if relative.suffix.lower() in BINARY_SUFFIX:
-            rejected.append((text, "binary or game asset"))
+        suffix = relative.suffix.lower()
+        if suffix in BINARY_SUFFIX or suffix in GAME_DATA_SUFFIX:
+            rejected.append((text, "binary or game data"))
             continue
         full = source / relative
         if not full.is_file():
@@ -140,13 +147,6 @@ def write_zip(out, source, apk, tag, files, manifest):
             info = zipfile.ZipInfo(f"source/{name}", FIXED_TIME)
             info.external_attr = 0o644 << 16
             archive.writestr(info, full.read_bytes())
-
-        for name in REQUIRED_DOCS:
-            full = source / name
-            if full.is_file():
-                info = zipfile.ZipInfo(f"source/{name}", FIXED_TIME)
-                info.external_attr = 0o644 << 16
-                archive.writestr(info, full.read_bytes())
 
         info = zipfile.ZipInfo("release-manifest.json", FIXED_TIME)
         info.external_attr = 0o644 << 16
@@ -210,6 +210,12 @@ def main():
     files, rejected = collect(source)
     if not files:
         print("no source files collected", file=sys.stderr)
+        return 1
+
+    included = {name for name, _ in files}
+    missing_docs = [name for name in REQUIRED_DOCS if name not in included]
+    if missing_docs:
+        print(f"required documents excluded from archive: {', '.join(missing_docs)}", file=sys.stderr)
         return 1
 
     manifest = build_manifest(source, apk, args.tag, files, rejected, args.commit)
