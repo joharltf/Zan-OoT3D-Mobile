@@ -44,16 +44,17 @@ SENSITIVE_NAME = re.compile(
 # Only actual game-data containers are excluded. Source files whose names
 # mention ROMs or saves (for example the forge-rom crate) are part of the GPL
 # corresponding source and must be included.
+# Project-owned binary resources (icons, touch graphics, shader packs and UI
+# archives) are part of the corresponding source and are kept. Only actual
+# game-data containers, prebuilt executables and screenshots are dropped.
+EXCLUDED_SUFFIX = {
+    ".apk", ".so", ".a", ".o", ".dll", ".exe", ".dylib", ".appimage",
+    ".zip", ".tar", ".gz", ".xz", ".7z", ".rar", ".jar", ".class",
+    ".pyc", ".pdf", ".bin", ".dat",
+}
 GAME_DATA_SUFFIX = {
     ".rom", ".cia", ".3ds", ".ncsd", ".ncch", ".sav", ".srm", ".state",
 }
-BINARY_SUFFIX = {
-    ".apk", ".so", ".a", ".o", ".dll", ".exe", ".dylib", ".appimage",
-    ".zip", ".tar", ".gz", ".xz", ".7z", ".rar", ".jar", ".class",
-    ".pyc", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".pdf", ".bin",
-    ".dat", ".ctxb", ".zar", ".qbf", ".bps", ".ips",
-}
-MAX_BYTES = 5 * 1024 * 1024
 FIXED_TIME = (1980, 1, 1, 0, 0, 0)
 
 
@@ -87,15 +88,14 @@ def collect(source):
             rejected.append((text, "sensitive-looking path"))
             continue
         suffix = relative.suffix.lower()
-        if suffix in BINARY_SUFFIX or suffix in GAME_DATA_SUFFIX:
+        if suffix in EXCLUDED_SUFFIX or suffix in GAME_DATA_SUFFIX:
             rejected.append((text, "binary or game data"))
+            continue
+        if text.startswith("docs/images/"):
+            rejected.append((text, "documentation screenshot"))
             continue
         full = source / relative
         if not full.is_file():
-            continue
-        size = full.stat().st_size
-        if size > MAX_BYTES:
-            rejected.append((text, f"larger than {MAX_BYTES} bytes"))
             continue
         files.append((text, full))
     return files, rejected
@@ -121,6 +121,7 @@ def build_manifest(source, apk, tag, files, rejected, commit=None):
             "repository": git(source, "remote", "get-url", "origin"),
             "branch": git(source, "rev-parse", "--abbrev-ref", "HEAD"),
             "commit": commit or git(source, "rev-parse", "HEAD"),
+            "archive_tree_commit": git(source, "rev-parse", "HEAD"),
             "clean": not bool(git(source, "status", "--porcelain")),
         },
         "upstream": {
