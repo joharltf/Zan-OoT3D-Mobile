@@ -3,16 +3,30 @@
 ![Zan — Ocarina of Time 3D — Mobile social preview](https://raw.githubusercontent.com/joharltf/Zan-Previews/main/oot3d-mobile/zan-mobile-social-preview.png)
 
 This repo contains **only** release artifacts and documentation. It is not a source repo
-and cannot be used to rebuild the APK.
+and cannot be used to rebuild the APK on its own; see [SOURCE_OFFER.md](SOURCE_OFFER.md)
+for the corresponding source attached to each release.
 
-See [LICENSE](LICENSE) before downloading. Redistribution, reverse engineering
-and rebuilding are not permitted.
+See [LICENSE](LICENSE) before downloading. The third-party parts of the APK — including
+the TriAevum engine — keep their own licenses, which are not restricted by this repo's
+license.
 
 ## Credits
 
-This build is based on the recompilation engine and Forge runtime created by
-[coccofresco](https://github.com/coccofresco). Credit and thanks go to him and
-his contributors.
+This build is derived from the recompilation engine, Forge runtime and Android work in
+[coccofresco/TriAevum](https://github.com/coccofresco/TriAevum), licensed GPL-3.0-or-later.
+Credit and thanks go to coccofresco and all contributors whose code and artwork are
+listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and in the notices inside the APK.
+
+The original games were created by Nintendo and Grezzo. No game data is bundled.
+
+## Licensing and source
+
+- [LICENSE](LICENSE) — terms for material authored by joharltf, with an explicit
+  carve-out preserving GPL and other third-party rights.
+- [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) — component licenses and boundaries.
+  The full texts ship inside every APK under `assets/notices/`.
+- [SOURCE_OFFER.md](SOURCE_OFFER.md) — how the GPL corresponding source for each
+  release is published.
 
 ## Current prerelease
 

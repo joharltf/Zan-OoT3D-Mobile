@@ -1,28 +1,56 @@
-PROPRIETARY LICENSE — PREBUILT APPLICATION ONLY
+LICENSE — ZAN RELEASE ARTIFACTS
 
-Copyright (c) 2026 joharltf. All rights reserved.
+Copyright (c) 2026 joharltf.
 
-This repository distributes only prebuilt Android application binaries for
-private testing. No source code, build scripts, keys or game data are included.
+This repository distributes prebuilt Android binaries and documentation. It is
+not a source repository.
 
-Permission is granted to the recipient to:
-  1. download and install the APK on devices they own or are authorized to test;
-  2. use the APK for private, non-commercial evaluation and bug reporting.
+## 1. Third-party material is not covered by this license
 
-No permission is granted to:
-  1. copy, modify, adapt, translate, decompile, disassemble or reverse engineer
-     the APK or any part of it;
-  2. rebuild, re-sign, repackage or produce derivatives of the application;
-  3. redistribute, sublicense, sell, publish or otherwise make the APK available
-     to third parties;
-  4. extract, bundle or distribute ROM images, decrypted game data, extracted
-     assets, save files or save states.
+The APK embeds material from other projects. In particular, the TriAevum
+recompilation engine, Forge runtime and the Android changes made to them are
+derived from https://github.com/coccofresco/TriAevum and are licensed under
+the GNU General Public License, version 3 or later (GPL-3.0-or-later).
 
-The recipient must supply their own legally obtained decrypted game image
-locally. No ROM or game data is bundled with the APK.
+Other embedded components — libultraship, SDL2, SDL_GameControllerDB, NVIDIA
+NRI, zstd, Rust Forge crates, the Fira Sans font, Godot-derived shaders and
+others — keep their own respective licenses. The complete list and license
+texts ship inside every APK under `assets/notices/` and are also summarised in
+THIRD_PARTY_NOTICES.md in this repository.
 
-Embedded third-party components remain subject to their own license terms.
-See THIRD_PARTY_NOTICES.md in the source repository Port-Native/zeldaoot3d.
+Nothing in this file limits, overrides, removes or relicenses any right
+granted by the GPL or by those component licenses. For that material the GPL
+and the component licenses govern.
 
-THE APK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. THE AUTHOR IS NOT
-LIABLE FOR ANY DAMAGES ARISING FROM ITS USE.
+## 2. Corresponding source for the GPL material
+
+An archive of the exact source used to build each binary release, together
+with `release-manifest.json`, is attached to that release on the releases page.
+See SOURCE_OFFER.md. The upstream base source is also available from
+https://github.com/coccofresco/TriAevum.
+
+## 3. Material authored by joharltf
+
+Only the material authored by joharltf that is **not** derived from
+third-party code — these release notes, the Zan branding, and packaging
+documentation — is covered by the following terms:
+
+Permission is granted to read this material, and to download and install the
+APK on devices the recipient owns or is authorised to test, and to report bugs.
+
+No permission is granted by this paragraph to copy, modify, publish or
+redistribute that specific original material. This paragraph does **not**
+apply to GPL-covered code, to modifications of GPL-covered code, or to any
+other third-party component; those remain under their own licenses.
+
+## 4. No game data
+
+No ROM, decrypted game data, extracted assets, keys or save files are bundled.
+The recipient must supply their own legally obtained decrypted game image.
+
+## 5. Warranty
+
+The APK is provided "AS IS", without warranty of any kind. To the extent
+permitted by applicable law, the author is not liable for damages arising
+from its use. Nothing here removes rights or warranties required by the GPL
+or other applicable component licenses.
