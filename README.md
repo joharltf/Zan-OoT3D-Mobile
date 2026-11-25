@@ -10,12 +10,13 @@ and rebuilding are not permitted.
 
 ## Credits
 
-This build is based on the **TriAevum** engine and Forge runtime. Credit and
-thanks go to the TriAevum project and its contributors.
+This build is based on the recompilation engine and Forge runtime created by
+[coccofresco](https://github.com/coccofresco). Credit and thanks go to him and
+his contributors.
 
 ## Current prerelease
 
-`v0.1.0-rc2` — see the [release](../../releases/tag/v0.1.0-rc2) or [release notes](RELEASE_NOTES_RC2.md).
+`v0.1.0-rc3` — see the [release](../../releases/tag/v0.1.0-rc3).
 
 | Item | Value |
 | --- | --- |
@@ -25,7 +26,7 @@ thanks go to the TriAevum project and its contributors.
 | Renderer | Native Vulkan path with NRI where supported |
 | Verified device | Xiaomi `surya`, Snapdragon 732G / Adreno 618, Android 12, Vulkan 1.1 |
 | Not yet device-verified | Helio G85/G99, Mali-G52/G57 class |
-| APK SHA-256 | `5872c80c532dd7665e43ea545776a27450d1f28b4b6af7ce1131c9626f4d072b` |
+| APK SHA-256 | `6951c0c8d244ca3221d2394663407d00139f4d12417af86d82cb88b8f02ef306` |
 
 This is a **prerelease**. Stable `v0.1.0` will be published after more device
 qualification, especially on Mali.
