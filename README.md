@@ -24,12 +24,12 @@ his contributors.
 | ABI | `arm64-v8a` |
 | Minimum Android | 10 (API 29) |
 | Renderer | Native Vulkan path with NRI where supported |
-| Verified device | Xiaomi `surya`, Snapdragon 732G / Adreno 618, Android 12, Vulkan 1.1 |
-| Not yet device-verified | Helio G85/G99, Mali-G52/G57 class |
+| Verified devices | Xiaomi `surya` and POCO X3 NFC (Snapdragon 732G / Adreno 618, Android 12, Vulkan 1.1); Redmi Note 9 (Helio G85 / Mali-G52); Nubia Neo 3 5G |
+| Not yet device-verified | Other Helio G99 / Mali-G57 devices not individually tested |
 | APK SHA-256 | `6951c0c8d244ca3221d2394663407d00139f4d12417af86d82cb88b8f02ef306` |
 
-This is a **prerelease**. Stable `v0.1.0` will be published after more device
-qualification, especially on Mali.
+This is a **prerelease**. Stable `v0.1.0` will be published after qualification
+on the remaining untested Mali devices.
 
 ## Install and test
 
