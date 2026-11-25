@@ -4,9 +4,12 @@
 Usage:
     python3 scripts/package-source.py \
         --source-dir /path/to/Port-Native \
-        --apk /path/to/Zan-OoT3D-Mobile-arm64.apk \
+        --apk-sha256 <published sha256> \
         --tag v0.1.0-rc3 \
         --out Zan-OoT3D-Mobile-v0.1.0-rc3-source.zip
+
+Use --apk /path/to/Zan-OoT3D-Mobile-arm64.apk instead of --apk-sha256 to hash
+a local binary.
 
 The script refuses a dirty source tree and any path that looks like a ROM,
 game dump, credential, signing key or prebuilt binary.
@@ -101,7 +104,7 @@ def collect(source):
     return files, rejected
 
 
-def build_manifest(source, apk, tag, files, rejected, commit=None):
+def build_manifest(source, apk_name, apk_hash, tag, files, rejected, commit=None):
     patch = source / "ZELDAOOT3D_PATCH.md"
     upstream_commit = None
     if patch.is_file():
@@ -114,8 +117,8 @@ def build_manifest(source, apk, tag, files, rejected, commit=None):
         "tag": tag,
         "package": "org.zan.ocarinaoftime",
         "apk": {
-            "filename": apk.name,
-            "sha256": sha256(apk),
+            "filename": apk_name,
+            "sha256": apk_hash,
         },
         "source": {
             "repository": git(source, "remote", "get-url", "origin"),
@@ -142,7 +145,7 @@ def build_manifest(source, apk, tag, files, rejected, commit=None):
     }
 
 
-def write_zip(out, source, apk, tag, files, manifest):
+def write_zip(out, tag, files, manifest):
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for name, full in files:
             info = zipfile.ZipInfo(f"source/{name}", FIXED_TIME)
@@ -179,7 +182,8 @@ identities, and `source/LICENSE_SCOPE.md` for the license boundaries.
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-dir", required=True, type=Path)
-    parser.add_argument("--apk", required=True, type=Path)
+    parser.add_argument("--apk", type=Path, help="APK to hash (alternative to --apk-sha256)")
+    parser.add_argument("--apk-sha256", help="published APK SHA-256 (alternative to --apk)")
     parser.add_argument("--tag", required=True)
     parser.add_argument(
         "--commit",
@@ -188,16 +192,25 @@ def main():
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
 
+    if bool(args.apk) == bool(args.apk_sha256):
+        parser.error("provide exactly one of --apk or --apk-sha256")
     source = args.source_dir.resolve()
-    apk = args.apk.resolve()
     out = args.out.resolve()
 
     if not (source / ".git").exists():
         print(f"not a git checkout: {source}", file=sys.stderr)
         return 1
-    if not apk.is_file():
-        print(f"APK not found: {apk}", file=sys.stderr)
-        return 1
+    if args.apk:
+        apk = args.apk.resolve()
+        if not apk.is_file():
+            print(f"APK not found: {apk}", file=sys.stderr)
+            return 1
+        apk_name, apk_hash = apk.name, sha256(apk)
+    else:
+        apk_hash = args.apk_sha256.strip().lower()
+        if not re.fullmatch(r"[0-9a-f]{64}", apk_hash):
+            parser.error("--apk-sha256 must be a 64-character hex digest")
+        apk_name = "Zan-OoT3D-Mobile-arm64.apk"
 
     missing = [name for name in REQUIRED_DOCS if not (source / name).is_file()]
     if missing:
@@ -219,8 +232,8 @@ def main():
         print(f"required documents excluded from archive: {', '.join(missing_docs)}", file=sys.stderr)
         return 1
 
-    manifest = build_manifest(source, apk, args.tag, files, rejected, args.commit)
-    write_zip(out, source, apk, args.tag, files, manifest)
+    manifest = build_manifest(source, apk_name, apk_hash, args.tag, files, rejected, args.commit)
+    write_zip(out, args.tag, files, manifest)
     print(
         f"wrote {out} — {len(files)} source files, "
         f"{len(rejected)} paths excluded, APK {manifest['apk']['sha256'][:12]}…"

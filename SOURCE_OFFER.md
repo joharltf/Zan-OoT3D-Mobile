@@ -44,6 +44,9 @@ python3 scripts/package-source.py \
   --out Zan-OoT3D-Mobile-v0.1.0-rc3-source.zip
 ```
 
+If the APK is not available locally, pass `--apk-sha256 <digest>` from the
+release's `.sha256` asset instead of `--apk`.
+
 Then attach the resulting zip to the matching release. The script refuses to
 run if the source tree is missing its license/scope documents or if a
 sensitive-looking path is present.
