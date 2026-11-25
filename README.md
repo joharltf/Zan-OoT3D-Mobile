@@ -28,8 +28,10 @@ his contributors.
 | Not yet device-verified | Other Helio G99 / Mali-G57 devices not individually tested |
 | APK SHA-256 | `6951c0c8d244ca3221d2394663407d00139f4d12417af86d82cb88b8f02ef306` |
 
-This is a **prerelease**. Stable `v0.1.0` will be published after qualification
-on the remaining untested Mali devices.
+This build includes the top-centre plain-text performance overlay, the `REPORT`
+tab with `/sdcard/OOTD/log.txt` and share links, and the in-game `Resolution`
+row. This is a **prerelease**. Stable `v0.1.0` will be published after
+qualification on the remaining untested Mali devices.
 
 ## Install and test
 
